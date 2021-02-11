@@ -1,0 +1,1 @@
+{"ast":null,"code":"const Index = () => {};\n\nexport default Index;","map":{"version":3,"sources":["D:/webserv4u/blog/frontend/pages/index.js"],"names":["Index"],"mappings":"AACA,MAAMA,KAAK,GAAC,MAAK,CAEhB,CAFD;;AAIA,eAAeA,KAAf","sourcesContent":["\r\nconst Index=()=> {\r\n    \r\n}\r\n\r\nexport default Index;"]},"metadata":{},"sourceType":"module"}

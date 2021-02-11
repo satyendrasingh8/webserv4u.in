@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import {APP_NAME} from '../config'
 import {
   Collapse,
   Navbar,
@@ -23,15 +24,15 @@ const [isOpen, setIsOpen] = useState(false)
     return(
         <div>
         <Navbar color="light" light expand="md">
-          <NavbarBrand href="/">reactstrap</NavbarBrand>
+          <NavbarBrand className="font-weight-bold" href="/">{APP_NAME}</NavbarBrand>
           <NavbarToggler onClick={toggle} />
           <Collapse isOpen={isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="/components/">Components</NavLink>
+                <NavLink href="/signup">Signup</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
+                <NavLink href="/signin">Signin</NavLink>
               </NavItem>
              
             </Nav>

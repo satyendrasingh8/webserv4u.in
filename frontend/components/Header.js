@@ -52,9 +52,9 @@ const [isOpen, setIsOpen] = useState(false)
               </NavItem>)}
 
               {isAuth() && isAuth().role == 1 && (<NavItem>
-           <NavLink href="/admin">
+           <Link href="/admin">
                 {`${isAuth().name}'s Dashboard`}
-                </NavLink> 
+                </Link> 
               </NavItem>)}
 
               

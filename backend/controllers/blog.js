@@ -28,7 +28,7 @@ exports.create = (req,res)=>{
         })
     }
 
-    if(!body || body.length < 200){
+    if(!body || body.length < 20){
         return res.status(400).json({
             error:"Content is too short!"
         })

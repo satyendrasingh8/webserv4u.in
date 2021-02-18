@@ -306,7 +306,21 @@ Blog.find({_id:{$ne:_id}, categories:{$in:categories}})
 
 }
 
-
+exports.listSearch = (req,res) => {
+    const {search} = req.query
+    if(search) {
+        Blog.find({
+            $or: [{title: {$regex:search, $options:'i'}},{body: {$regex:search, $options:'i'}}]
+        },(err,blogs) => {
+            if (err) {
+                return res.status(400).json({
+                    error: errorHandler(err)
+                });
+            }
+            res.json(blogs)
+        }).select('-photo -body')
+    }
+}
 
 
 

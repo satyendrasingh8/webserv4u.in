@@ -1,5 +1,6 @@
 import fetch from 'isomorphic-fetch'
 import {API} from '../config'
+import queryString from 'query-string'
 
 export async function createBlog(blog,token) {
     // Default options are marked with *
@@ -129,6 +130,36 @@ export async function createBlog(blog,token) {
     });
     return response.json(); // parses JSON response into native JavaScript objects
   }
+
+
+  export async function listSearch(params) {
+    console.log('search params',params)
+    let query = queryString.stringify(params)
+    console.log('query params',query)
+    const response = await fetch(`${API}/blogs/search?${query}`, {
+      method: 'GET', // *GET, POST, PUT, DELETE, etc.
+      mode: 'cors', // no-cors, *cors, same-origin
+      cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+      credentials: 'same-origin', // include, *same-origin, omit
+      
+    });
+    return response.json(); // parses JSON response into native JavaScript objects
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

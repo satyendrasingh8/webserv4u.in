@@ -13,6 +13,7 @@ import {
   NavLink,
 } from 'reactstrap';
 import Link from 'next/link'
+import Search from './blog/Search'
 import '.././node_modules/nprogress/nprogress.css'
 
 
@@ -28,7 +29,7 @@ const [isOpen, setIsOpen] = useState(false)
      setIsOpen(!isOpen)
  }
     return(
-        <div>
+        <React.Fragment>
         <Navbar color="light" light expand="md">
         <Link href="/"><NavLink className="font-weight-bold" style={{cursor:'pointer'}}>WebServ4u</NavLink></Link>
           <NavbarToggler onClick={toggle} />
@@ -73,7 +74,8 @@ const [isOpen, setIsOpen] = useState(false)
            
           </Collapse>
         </Navbar>
-      </div>   
+        <Search />
+      </React.Fragment>   
     )
 } 
 

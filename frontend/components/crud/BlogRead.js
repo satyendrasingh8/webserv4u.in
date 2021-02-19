@@ -5,7 +5,7 @@ import moment from 'moment'
 import {getCookie,isAuth} from '../../actions/auth'
 import {list,removeBlog} from  '../../actions/blog'
 
-const BlogRead = () => {
+const BlogRead = ({username}) => {
 const [blogs,setBlogs] = useState([])
 const [message,setMessage] = useState('')
 const token = getCookie('token')
@@ -15,7 +15,7 @@ loadBlogs();
 },[])
 
 const loadBlogs = () => {
-    list().then(data => {
+    list(username).then(data => {
         if(data.error){
             console.log(data.error)
         } else{

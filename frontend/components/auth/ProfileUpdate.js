@@ -33,7 +33,7 @@ const ProfileUpdate = () => {
 
     useEffect(()=>{
   init();
-  setValues({ ...values, userData: new FormData() });
+    setValues({ ...values, userData: new FormData() });
     },[])
 
     const handleChange = name => e => {

@@ -1,21 +1,21 @@
 import fetch from 'isomorphic-fetch'
 import cookie from 'js-cookie'
 import {API} from '../config'
+import Router from 'next/router'
 
-//  export const signup = user => {
-//     return fetch(`http://localhost:8000/api/signup`, {
-//         method: 'POST',
-//         headers: {
-//             'Accept': 'application/json',
-//             'Content-Type': 'application/json'
-//         },
-//         body: JSON.stringify(user)
-//     })
-//         .then(response => {
-//             return response.json();
-//         })
-//         .catch(err => console.log(err));
-// };
+export const handleResponse = response => {
+if(response.status == 401) {
+  removeCookie('token')
+  removeLocalStorage('user')
+  Router.push({
+    pathname:'/signin',
+    query:{
+      message:"your session is expired! please signin"
+    }
+  })
+}
+}
+
 export async function signup(user) {
     // Default options are marked with *
     const response = await fetch(`${API}/signup`, {

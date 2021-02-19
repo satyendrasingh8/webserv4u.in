@@ -9,7 +9,7 @@ const SmallCard = ({blog}) => {
         <div className="card">
             <section>
                 <Link href={`/blogs/${blog.slug}`}>
-                    <a> <img className="img img-fluid" style={{maxHeight:"auto", width:"100%"}} src={`${API}/blog/photo/${blog.slug}`} alt={blog.title} />
+                    <a> <img className="img img-fluid" style={{height:"250px", width:"100%"}} src={`${API}/blog/photo/${blog.slug}`} alt={blog.title} />
                     </a>
                 </Link>
             </section>

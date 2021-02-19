@@ -1,5 +1,6 @@
 import fetch from 'isomorphic-fetch'
 import {API} from '../config'
+import { handleResponse } from './auth';
 
 export async function create(tag,token) {
     // Default options are marked with *
@@ -17,6 +18,7 @@ export async function create(tag,token) {
      // referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
       body: JSON.stringify(tag) // body data type must match "Content-Type" header
     });
+    handleResponse(response);
     return response.json(); // parses JSON response into native JavaScript objects
   }
 
@@ -61,6 +63,7 @@ export async function create(tag,token) {
         redirect: 'follow', // manual, *follow, error
     
     });
+    handleResponse(response);
     return response.json(); // parses JSON response into native JavaScript objects
   }
 

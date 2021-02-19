@@ -53,13 +53,13 @@ const [isOpen, setIsOpen] = useState(false)
 
               {isAuth() && isAuth().role == 0 && (<NavItem>
                 <Link href="/user">
-                {`${isAuth().name}'s Dashboard`}
+               <NavLink style={{cursor:'pointer'}}> {`${isAuth().name}'s Dashboard`} </NavLink>
                 </Link> 
               </NavItem>)}
 
               {isAuth() && isAuth().role == 1 && (<NavItem>
            <Link href="/admin">
-                {`${isAuth().name}'s Dashboard`}
+             <NavLink style={{cursor:'pointer'}}>    {`${isAuth().name}'s Dashboard`} </NavLink>
                 </Link> 
               </NavItem>)}
 
@@ -69,7 +69,13 @@ const [isOpen, setIsOpen] = useState(false)
                 onClick={()=> signout(() => Router.replace(`/signin`))}
                 >Signout</NavLink>
               </NavItem>)}
-
+              
+              <NavItem>
+                <Link href="/user/crud/blog">
+                  <NavLink className="btn btn-primary text-light" style={{cursor:'pointer'}}> 
+                  create blog
+                   </NavLink></Link>
+              </NavItem>
             </Nav>
            
           </Collapse>

@@ -1,10 +1,17 @@
 import fetch from 'isomorphic-fetch'
 import {API} from '../config'
 import queryString from 'query-string'
+import {isAuth,handleResponse} from './auth'
 
 export async function createBlog(blog,token) {
+  let createBlogEndpoint;
+  if(isAuth() && isAuth().role == 1) {
+    createBlogEndpoint = `${API}/blog`
+  }  else if(isAuth() && isAuth().role == 0) {
+    createBlogEndpoint = `${API}/user/blog`
+  }
     // Default options are marked with *
-    const response = await fetch(`${API}/blog`, {
+    const response = await fetch(`${createBlogEndpoint}`, {
       method: 'POST', // *GET, POST, PUT, DELETE, etc.
       mode: 'cors', // no-cors, *cors, same-origin
       cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -18,6 +25,7 @@ export async function createBlog(blog,token) {
      // referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
       body: blog // body data type must match "Content-Type" header
     });
+    handleResponse(response);
     return response.json(); // parses JSON response into native JavaScript objects
   }
 
@@ -77,9 +85,16 @@ export async function createBlog(blog,token) {
   }
 
 
-  export async function list() {
+  export async function list(username) {
+    let listBlogsEndpoint;
+  if(username) {
+    listBlogsEndpoint = `${API}/${username}/blogs`
+  }  else {
+    listBlogsEndpoint = `${API}/blogs`
+  }
+
     // Default options are marked with *
-    const response = await fetch(`${API}/blogs`, {
+    const response = await fetch(`${listBlogsEndpoint}`, {
       method: 'GET', // *GET, POST, PUT, DELETE, etc.
       mode: 'cors', // no-cors, *cors, same-origin
       cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -91,8 +106,14 @@ export async function createBlog(blog,token) {
 
 
   export async function removeBlog(slug,token) {
- 
-    const response = await fetch(`${API}/blog/${slug}`, {
+    let deleteBlogEndpoint;
+    if(isAuth() && isAuth().role == 1) {
+      deleteBlogEndpoint = `${API}/blog/${slug}`
+    }  else if(isAuth() && isAuth().role == 0) {
+      deleteBlogEndpoint = `${API}/user/blog/${slug}`
+    }
+
+    const response = await fetch(`${deleteBlogEndpoint}`, {
       method: 'DELETE', // *GET, POST, PUT, DELETE, etc.
       mode: 'cors', // no-cors, *cors, same-origin
       cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -107,14 +128,21 @@ export async function createBlog(blog,token) {
      // referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
      // body data type must match "Content-Type" header
     });
+    handleResponse(response);
     return response.json(); // parses JSON response into native JavaScript objects
   }
 
   
 
   export async function updateBlog(blog,token,slug) {
- 
-    const response = await fetch(`${API}/blog/${slug}`, {
+    let updateBlogEndpoint;
+    if(isAuth() && isAuth().role == 1) {
+      updateBlogEndpoint = `${API}/blog/${slug}`
+    }  else if(isAuth() && isAuth().role == 0) {
+      updateBlogEndpoint = `${API}/user/blog/${slug}`
+    }
+
+    const response = await fetch(`${updateBlogEndpoint}`, {
       method: 'PUT', // *GET, POST, PUT, DELETE, etc.
       mode: 'cors', // no-cors, *cors, same-origin
       cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -128,6 +156,7 @@ export async function createBlog(blog,token) {
      // referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
      // body data type must match "Content-Type" header
     });
+    handleResponse(response);
     return response.json(); // parses JSON response into native JavaScript objects
   }
 

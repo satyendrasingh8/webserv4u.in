@@ -24,15 +24,15 @@
       "static/chunks/webpack.js",
       "static/chunks/pages/_error.js"
     ],
+    "/blogs": [
+      "static/chunks/main.js",
+      "static/chunks/webpack.js",
+      "static/chunks/pages/blogs.js"
+    ],
     "/blogs/[slug]": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",
       "static/chunks/pages/blogs/[slug].js"
-    ],
-    "/user/crud/blogs": [
-      "static/chunks/main.js",
-      "static/chunks/webpack.js",
-      "static/chunks/pages/user/crud/blogs.js"
     ]
   },
   "ampFirstPages": []

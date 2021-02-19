@@ -6,7 +6,8 @@ module.exports = {
      PRODUCTION: false,
      DOMAIN_DEVELOPMENT:'http://localhost:3000' ,
      DOMAIN_PRODUCTION:'https://webserv4u.in',
-     FB_APP_ID:'870847340154746'
+     FB_APP_ID:'870847340154746',
+     DISQUS_SHORTNAME:'webserv4u'
 
  }
 };

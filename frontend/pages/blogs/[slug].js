@@ -7,7 +7,7 @@ import React,{useState,useEffect} from 'react'
 import {singleBlog,listRelated} from '../../actions/blog'
 import {API,DOMAIN,APP_NAME,FB_APP_ID} from '../../config'
 import SmallCard from '../../components/blog/SmallCard'
-
+import DisqusThread from '../../components/DisqusThread'
 const SingleBlog = ({blog,query}) => {
 
     const head = () => (
@@ -69,6 +69,14 @@ loadRelated();
           </div>
       ))
   }
+ 
+ const showDisqusComments = () => {
+     return (
+         <div>
+             <DisqusThread id={blog.id} title={blog.title} path={`/blog/${blog.slug}`} />
+         </div>
+     )
+ }
 
     return (
         <React.Fragment>
@@ -113,8 +121,8 @@ loadRelated();
          </div>
         </div>
 
-        <div className="container pb-5">
-        <p>show comments</p>
+        <div className="container pb-5 pt-5">
+       {showDisqusComments()}
         </div>
     </article>
 </main>

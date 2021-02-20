@@ -1,6 +1,8 @@
 import React, { useState,useEffect } from 'react'
 import {signin,authenticate,isAuth} from '../../actions/auth'
 import Router from 'next/router'
+import LoginGoogle from './LoginGoogle'
+
 const SigninComponent = () => {
     const [values, setValues] = useState({
         email:'test@gmail.com',
@@ -54,7 +56,7 @@ const handleSubmit = e => {
        {showLoading()}
        {showError()}
        {showMessage()}
-
+         <LoginGoogle />
       { showForm &&  <form onSubmit={handleSubmit}>
      
         <div className="form-group">
